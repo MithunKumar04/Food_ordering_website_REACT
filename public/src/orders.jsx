@@ -8,7 +8,7 @@ const OrderItem = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/orders/${name}`).then((response) => {
+    axios.get(`https://fow-backend.onrender.com/orders/${name}`).then((response) => {
       let filtered = [];
       const value = response.data;
       for (let i = 0; i < value.length; i++) {

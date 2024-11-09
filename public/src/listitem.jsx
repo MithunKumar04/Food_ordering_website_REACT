@@ -9,7 +9,7 @@ const ListItem = () => {
 
   useEffect(()=>
   {
-    axios.get(`http://localhost:3000/listitem/${name}`)
+    axios.get(`https://fow-backend.onrender.com/listitem/${name}`)
     .then((response)=>
     {
       let filtered=[]

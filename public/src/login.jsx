@@ -24,7 +24,7 @@ function LoginR() {
     if(validateForm(email,password))
     {console.log(`${email}${password}`);
     axios
-      .post("http://localhost:3000/login",{ email, password })
+      .post("https://fow-backend.onrender.com/login",{ email, password })
       .then((result) => {
         console.log(result.data);
         if(result.data === "Incorrect password")
@@ -82,7 +82,7 @@ function LoginR() {
           </button>
           <p>New to the website?</p>
           <Link
-            to="/register"
+            to="/"
             className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none"
           >
             Register

@@ -22,7 +22,7 @@ const CartItem = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/user/${name}/cart`)
+      .get(`https://fow-backend.onrender.com/user/${name}/cart`)
       .then((response) => {
         const filtered = response.data.filter((item) => item.CustName === name);
         setData(filtered);
@@ -44,7 +44,7 @@ const CartItem = () => {
 
   const delItem = (id) => {
     axios
-      .delete(`http://localhost:3000/user/${name}/cart`, { data: { id } })
+      .delete(`https://fow-backend.onrender.com/user/${name}/cart`, { data: { id } })
       .then((response) => {
         console.log(response);
         // Optionally, refresh data or update state here
@@ -60,7 +60,7 @@ const CartItem = () => {
     }
 
     axios
-      .post(`http://localhost:3000/user/${name}/cart`, {
+      .post(`https://fow-backend.onrender.com/user/${name}/cart`, {
         CustName: custName,
         RestName: restName,
         Dishes: dishNames,

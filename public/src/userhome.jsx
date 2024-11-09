@@ -8,7 +8,7 @@ const HomePageU = () => {
   const { name } = useParams(); 
   useEffect(()=>
   {
-    axios.get(`http://localhost:3000/homeuser/${name}`)
+    axios.get(`https://fow-backend.onrender.com/homeuser/${name}`)
     .then((result)=>
     {
       setVal(result.data);

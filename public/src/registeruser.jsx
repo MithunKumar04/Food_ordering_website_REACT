@@ -27,7 +27,7 @@ function RegisterU() {
     if(validateForm(name,email,password)){
     console.log(`${name}${email}${password}`);
     axios
-      .post("http://localhost:3000/registeruser", { name, email, password })
+      .post("https://fow-backend.onrender.com/registeruser", { name, email, password })
       .then((result) => {
         if(result.data==="User Aleady Exist")
         {
@@ -101,7 +101,7 @@ function RegisterU() {
             Login
           </Link>
           <Link
-            to="/register"
+            to="/"
             className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none"
           >
             Restaurant?

@@ -33,7 +33,7 @@ function AddItem() {
     if(validateForm(name ,itname ,price ,ratings, desc))
     {console.log(`${name} ${itname} ${price} ${ratings} ${desc}`);
     axios
-      .post(`http://localhost:3000/additem`, { "ResName":name,"itname":itname,"price": price,"ratings":ratings,"description":desc })
+      .post(`https://fow-backend.onrender.com/additem`, { "ResName":name,"itname":itname,"price": price,"ratings":ratings,"description":desc })
       .then((result) => {
         console.log(result.data);
         navigate(-1);

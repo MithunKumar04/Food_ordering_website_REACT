@@ -8,7 +8,7 @@ const HomePageR = () => {
   
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/homeres/${name}`) // Replace with your server endpoint
+      .get(`https://fow-backend.onrender.com/homeres/${name}`) // Replace with your server endpoint
       .then((response) => {
         setData(response.data); // Store the fetched data in state
       })

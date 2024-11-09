@@ -24,7 +24,7 @@ function LoginU() {
     if(validateForm(email,password))
     {console.log(`${email}${password}`);
     axios
-      .post("http://localhost:3000/loginuser",{ email, password })
+      .post("https://fow-backend.onrender.com/loginuser",{ email, password })
       .then((result) => {
         console.log(result);
         if(result.data === "Incorrect password")
@@ -88,7 +88,7 @@ function LoginU() {
             Register
           </Link>
           <Link
-            to="/register"
+            to="/"
             className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none"
           >
            Restaurant?
