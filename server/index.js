@@ -12,7 +12,7 @@ const cors = require("cors");
 const app = express();
 app.use(express.json());
 app.use(cors());
-mongoose.connect("mongodb://localhost:27017/user");
+mongoose.connect("mongodb://127.0.0.1:27017/user");
 
 app.post("/register", (req, res) => {
   const { name, email, password } = req.body;
@@ -163,6 +163,6 @@ app.post("/additem", (req, res) => {
     .catch((error) => res.json(error));
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT||3000, () => {
   console.log("app is running");
 });
