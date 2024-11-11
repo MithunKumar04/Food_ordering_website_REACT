@@ -1,54 +1,47 @@
-import { useState ,useEffect} from "react";
-import { useNavigate,useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
+import axios from "axios";
 const HomePageR = () => {
-  const { name } = useParams(); 
-  const [data, setData] = useState(null); 
+  const { name } = useParams();
+  const [data, setData] = useState("");
 
-  
   useEffect(() => {
     axios
-      .get(`https://fow-backend.onrender.com/homeres/${name}`) // Replace with your server endpoint
+      .get(`http://localhost:3000/homeres/${name}`) // Replace with your server endpoint
       .then((response) => {
         setData(response.data); // Store the fetched data in state
       })
       .catch((error) => {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       });
-  }, [name]); 
+  }, [name]);
 
   return (
     <>
       <div>
-      <h1>Detail Page for {name}</h1>
-      
-      <button>
-        <Link
-            to={`/additem`}
-            className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none"
-          >
-           Add item
-          </Link>
-        </button>
-
-        <button>
-        <Link
-            to={`/listitem/${name}`}
-            className="btn btn-default border w-200 bg-light rounded-0 text-decoration-none"
-          >
-           List items
-          </Link>
-        </button>
-
-        <button>
-        <Link
-            to={`/orders/${name}`}
-            className="btn btn-default border w-200 bg-light rounded-0 text-decoration-none"
-          >
-           My Orders
-          </Link>
-        </button>
-    </div>
+        <h1>Welcome {name} Restaurant manager</h1>
+        <div className="w-20 h-30 mx-5 my-5 py-5 px-5">
+          <button className="btn btn-default border w-9 bg-light rounded text-decoration-none">
+            <Link to={`/additem`} className="btn btn-default ">
+              Add item
+            </Link>
+          </button>
+          <br />
+          <br />
+          <button className="btn btn-default border w-9 bg-light rounded text-decoration-none">
+            <Link to={`/listitem/${name}`} className="btn ">
+              List items
+            </Link>
+          </button>{" "}
+          <br />
+          <br />
+          <button className="btn btn-default border w-9 bg-light rounded text-decoration-none">
+            <Link to={`/orders/${name}`} className="btn ">
+              My Orders
+            </Link>
+          </button>
+        </div>
+      </div>
     </>
   );
 };

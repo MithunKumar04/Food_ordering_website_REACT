@@ -27,7 +27,7 @@ function RegisterR() {
     if(validateForm(name,email,password)){
     console.log(`${name}${email}${password}`);
     axios
-      .post("https://fow-backend.onrender.com/register", { name, email, password })
+      .post("http://localhost:3000/register", { name, email, password })
       .then((result) => {
         if(result.data==="User Aleady Exist")
         {

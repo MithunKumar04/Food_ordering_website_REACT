@@ -1,18 +1,21 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 const {
   userModel,
   ResModel,
   itemModel,
   cartModel,
-  orderModel
+  orderModel,
 } = require("./models/item.js");
 const cors = require("cors");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
-mongoose.connect("mongodb://127.0.0.1:27017/user");
+const url = process.env.MONGO_URL;
+mongoose.connect(url);
 
 app.post("/register", (req, res) => {
   const { name, email, password } = req.body;
@@ -73,7 +76,7 @@ app.get("/homeuser/:name", async (req, res) => {
 });
 
 app.get("/restaurant/:name1/:name", async (req, res) => {
-  console.log("correct")
+  console.log("correct");
   const restaurantName = req.params.name;
   console.log(restaurantName);
   const restaurant = await itemModel.find(); // Hypothetical function
@@ -86,8 +89,29 @@ app.get("/restaurant/:name1/:name", async (req, res) => {
 
 app.get("/user/:name/cart", async (req, res) => {
   console.log("Started");
-  const restaurant = await cartModel.find(); 
-  const items = await itemModel.find();// Hypothetical function
+  const restaurant = await cartModel.find();
+  const items = await itemModel.find(); // Hypothetical function
+  if (restaurant) {
+    res.json(restaurant);
+  } else {
+    res.status(404).send("Restaurant not found");
+  }
+});
+app.get("/user/:name/order", async (req, res) => {
+  console.log("Started");
+  const restaurant = await orderModel.find();
+  const items = await itemModel.find(); // Hypothetical function
+  if (restaurant) {
+    res.json(restaurant);
+  } else {
+    res.status(404).send("Restaurant not found");
+  }
+});
+
+app.delete("/user/:name/cart/:id", async (req, res) => {
+  console.log("Deleted");
+  const restaurant = await cartModel.deleteOne({ _id: req.params.id }); // Hypothetical function
+  console.log(req.body.id);
   if (restaurant) {
     res.json(restaurant);
   } else {
@@ -97,7 +121,8 @@ app.get("/user/:name/cart", async (req, res) => {
 
 app.delete("/user/:name/cart", async (req, res) => {
   console.log("Deleted");
-  const restaurant = await cartModel.deleteOne({id:req.body.id}); // Hypothetical function
+  const restaurant = await cartModel.deleteMany({}); // Hypothetical function
+
   if (restaurant) {
     res.json(restaurant);
   } else {
@@ -113,7 +138,7 @@ app.post("/user/:name/cart", async (req, res) => {
     .catch((error) => res.json(error));
 });
 
-app.post("/:name1/:name", async (req, res) => {
+app.post("/restaurant/:name1/:name", async (req, res) => {
   console.log(req.body);
   cartModel
     .create(req.body)
@@ -147,7 +172,18 @@ app.get("/orders/:name", async (req, res) => {
   const restaurantName = req.params.name;
   console.log(restaurantName);
   const restaurant = await orderModel.find(); // Hypothetical function
-  console.log("what")
+  console.log("what");
+  if (restaurant) {
+    res.json(restaurant);
+  } else {
+    res.status(404).send("Restaurant not found");
+  }
+});
+
+app.delete("/orders/:name/:id", async (req, res) => {
+  console.log("Deleted");
+  const restaurant = await orderModel.deleteOne({ _id: req.params.id }); // Hypothetical function
+  console.log(req.body.id);
   if (restaurant) {
     res.json(restaurant);
   } else {
@@ -163,6 +199,6 @@ app.post("/additem", (req, res) => {
     .catch((error) => res.json(error));
 });
 
-app.listen(process.env.PORT||3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("app is running");
 });
