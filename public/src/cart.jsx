@@ -23,7 +23,7 @@ const CartItem = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/user/${name}/cart`)
+      .get(`https://food-ordering-website-2lmb.onrender.com/user/${name}/cart`)
       .then((response) => {
         const filtered = response.data.filter((item) => item.CustName === name);
         setData(filtered);
@@ -45,7 +45,7 @@ const CartItem = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/user/${name}/order`)
+      .get(`https://food-ordering-website-2lmb.onrender.com/user/${name}/order`)
       .then((response) => {
         let filtered = [];
         const value = response.data;
@@ -61,7 +61,7 @@ const CartItem = () => {
   const delItem = (id) => {
     console.log(id);
     axios
-      .delete(`http://localhost:3000/user/${name}/cart/${id}`)
+      .delete(`https://food-ordering-website-2lmb.onrender.com/user/${name}/cart/${id}`)
       .then((response) => {
         console.log(response);
         // Optionally, refresh data or update state here
@@ -107,7 +107,7 @@ const CartItem = () => {
     }
 
     axios
-      .post(`http://localhost:3000/user/${name}/cart`, {
+      .post(`https://food-ordering-website-2lmb.onrender.com/user/${name}/cart`, {
         CustName: custName,
         RestName: restName,
         Dishes: dishNames,
@@ -122,7 +122,7 @@ const CartItem = () => {
       .catch((error) => console.error(error));
 
     axios
-      .delete(`http://localhost:3000/user/${name}/cart`)
+      .delete(`https://food-ordering-website-2lmb.onrender.com/user/${name}/cart`)
       .then((response) => {
         console.log(response);
         // Optionally, refresh data or update state here

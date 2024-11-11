@@ -47,7 +47,7 @@ function AddItem() {
     if (validateForm(name, itname, price, ratings, desc)) {
       console.log(`${name} ${itname} ${price} ${ratings} ${desc}`);
       axios
-        .post(`http://localhost:3000/additem`, {
+        .post(`https://food-ordering-website-2lmb.onrender.com/additem`, {
           ResName: name,
           itname: itname,
           price: price,

@@ -7,7 +7,7 @@ const ListItem = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/listitem/${name}`).then((response) => {
+    axios.get(`https://food-ordering-website-2lmb.onrender.com/listitem/${name}`).then((response) => {
       let filtered = [];
       console.log(response.data);
       const value = response.data;

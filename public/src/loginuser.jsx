@@ -32,7 +32,7 @@ function LoginU() {
     if (validateForm(email, password)) {
       console.log(`${email}${password}`);
       axios
-        .post("http://localhost:3000/loginuser", { email, password })
+        .post("https://food-ordering-website-2lmb.onrender.com/loginuser", { email, password })
         .then((result) => {
           console.log(result);
           if (result.data === "Incorrect password") {

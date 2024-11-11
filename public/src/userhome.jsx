@@ -6,7 +6,7 @@ const HomePageU = () => {
   const navigate = useNavigate();
   const { name } = useParams();
   useEffect(() => {
-    axios.get(`http://localhost:3000/homeuser/${name}`).then((result) => {
+    axios.get(`https://food-ordering-website-2lmb.onrender.com/homeuser/${name}`).then((result) => {
       setVal(result.data);
       console.log(result.data);
     });

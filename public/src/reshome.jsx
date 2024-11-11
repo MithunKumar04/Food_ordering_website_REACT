@@ -7,7 +7,7 @@ const HomePageR = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/homeres/${name}`) // Replace with your server endpoint
+      .get(`https://food-ordering-website-2lmb.onrender.com/homeres/${name}`) // Replace with your server endpoint
       .then((response) => {
         setData(response.data); // Store the fetched data in state
       })

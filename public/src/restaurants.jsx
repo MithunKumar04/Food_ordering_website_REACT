@@ -9,7 +9,7 @@ const Restaurant = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/restaurant/${name1}/${name}`) // Replace with your server endpoint
+      .get(`https://food-ordering-website-2lmb.onrender.com/restaurant/${name1}/${name}`) // Replace with your server endpoint
       .then((response) => {
         let filtered = [];
         console.log(response.data);
@@ -28,7 +28,7 @@ const Restaurant = () => {
 
   function addFunc(value, price) {
     axios
-      .post(`http://localhost:3000/restaurant/${name1}/${name}`, {
+      .post(`https://food-ordering-website-2lmb.onrender.com/restaurant/${name1}/${name}`, {
         CustName: name1,
         RestName: name,
         Dish: value,

@@ -8,7 +8,7 @@ const OrderItem = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/orders/${name}`).then((response) => {
+    axios.get(`https://food-ordering-website-2lmb.onrender.com/orders/${name}`).then((response) => {
       let filtered = [];
       const value = response.data;
       for (let i = 0; i < value.length; i++) {
@@ -22,7 +22,7 @@ const OrderItem = () => {
   const delItem = (id) => {
     console.log(id);
     axios
-      .delete(`http://localhost:3000/orders/${name}/${id}`)
+      .delete(`https://food-ordering-website-2lmb.onrender.com/orders/${name}/${id}`)
       .then((response) => {
         console.log(response);
         // Optionally, refresh data or update state here
