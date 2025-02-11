@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {useParams } from "react-router-dom";
 import axios from "axios";
 const ListItem = () => {
   const { name } = useParams();
   const [val, setVal] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`https://food-ordering-website-2lmb.onrender.com/listitem/${name}`).then((response) => {
